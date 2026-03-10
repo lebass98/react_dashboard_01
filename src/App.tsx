@@ -9,12 +9,14 @@ import ActivityFeed from './components/ActivityFeed';
 import FormElements from './components/FormElements';
 import FormLayout from './components/FormLayout';
 import LoginPage from './components/LoginPage';
+import SignUpPage from './components/SignUpPage';
 import { DollarSign, Users, ShoppingCart, Eye } from 'lucide-react';
 
 const App: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
     return localStorage.getItem('isAuthenticated') === 'true';
   });
+  const [authMode, setAuthMode] = useState<'signin' | 'signup'>('signin');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState('dashboard');
   const [isDarkMode, setIsDarkMode] = useState(() => {
@@ -146,7 +148,11 @@ const App: React.FC = () => {
   };
 
   if (!isAuthenticated) {
-    return <LoginPage onLoginSuccess={handleLoginSuccess} onSignUpClick={() => alert('Sign Up functionality coming soon!')} />;
+    if (authMode === 'signin') {
+      return <LoginPage onLoginSuccess={handleLoginSuccess} onSignUpClick={() => setAuthMode('signup')} />;
+    } else {
+      return <SignUpPage onSignUpSuccess={handleLoginSuccess} onSignInClick={() => setAuthMode('signin')} />;
+    }
   }
 
   return (

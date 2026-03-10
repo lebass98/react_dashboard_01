@@ -1,33 +1,33 @@
 import React from 'react';
-import { UserPlus, Server, CheckCircle2, AlertTriangle } from 'lucide-react';
+
 
 const ActivityFeed: React.FC = () => {
   const activities = [
-    { 
-      type: 'user', 
-      title: 'New user registered', 
-      desc: 'Alex Johnson joined the platform.', 
+    {
+      type: 'user',
+      title: 'New user registered',
+      desc: 'Alex Johnson joined the platform.',
       time: '2 mins ago',
       color: 'bg-indigo-500'
     },
-    { 
-      type: 'system', 
-      title: 'Database backup completed', 
-      desc: 'Weekly automated backup finished.', 
+    {
+      type: 'system',
+      title: 'Database backup completed',
+      desc: 'Weekly automated backup finished.',
       time: '1 hour ago',
       color: 'bg-emerald-500'
     },
-    { 
-      type: 'alert', 
-      title: 'High CPU usage detected', 
-      desc: 'Server-01 reached 90% CPU load.', 
+    {
+      type: 'alert',
+      title: 'High CPU usage detected',
+      desc: 'Server-01 reached 90% CPU load.',
       time: '3 hours ago',
       color: 'bg-amber-500'
     },
-    { 
-      type: 'system', 
-      title: 'Server maintenance', 
-      desc: 'Scheduled maintenance completed.', 
+    {
+      type: 'system',
+      title: 'Server maintenance',
+      desc: 'Scheduled maintenance completed.',
       time: '5 hours ago',
       color: 'bg-slate-500'
     },
