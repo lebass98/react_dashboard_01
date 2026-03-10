@@ -136,7 +136,7 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = ({
 
       {/* Calendar Dropdown */}
       {isOpen && (
-        <div className="absolute top-full left-0 mt-2 bg-white rounded-xl shadow-[0_10px_40px_-10px_#00000020] border border-slate-100 p-5 z-50 w-[320px]">
+        <div className="absolute top-full right-0 mt-2 bg-white rounded-xl shadow-[0_10px_40px_-10px_#00000020] border border-slate-100 p-5 z-50 w-[320px]">
           
           {/* Header */}
           <div className="flex items-center justify-between mb-6 px-1">
