@@ -1,5 +1,6 @@
 import React from 'react';
 import { Mail, Copy, Upload, ChevronDown, CreditCard, Eye, X, Check } from 'lucide-react';
+import CustomDatePicker from './CustomDatePicker';
 
 const FormElements: React.FC = () => {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -125,11 +126,9 @@ const FormElements: React.FC = () => {
                 </div>
               </div>
 
-              <div className="space-y-2">
+              <div className="space-y-2 relative z-50">
                 <label className="text-sm font-semibold text-slate-700">Date Picker Input</label>
-                <div className="relative">
-                  <input type="date" className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 outline-none transition-all text-slate-500" />
-                </div>
+                <CustomDatePicker placeholder="mm/dd/yyyy" />
               </div>
 
               <div className="space-y-2">
