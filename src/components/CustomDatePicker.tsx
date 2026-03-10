@@ -129,29 +129,29 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = ({
           readOnly
           value={formatDate(selectedDate)}
           placeholder={placeholder} 
-          className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 outline-none transition-all cursor-pointer bg-white text-slate-800 placeholder-slate-400" 
+          className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900/50 outline-none transition-all cursor-pointer bg-white dark:bg-slate-800 text-slate-800 dark:text-white placeholder-slate-400 dark:placeholder-slate-500" 
         />
         <CalendarIcon className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
       </div>
 
       {/* Calendar Dropdown */}
       {isOpen && (
-        <div className="absolute top-full right-0 mt-2 bg-white rounded-xl shadow-[0_10px_40px_-10px_#00000020] border border-slate-100 p-5 z-50 w-[320px]">
+        <div className="absolute top-full right-0 mt-2 bg-white dark:bg-[#1A222C] rounded-xl shadow-[0_10px_40px_-10px_#00000020] dark:shadow-none border border-slate-100 dark:border-slate-800 p-5 z-50 w-[320px] transition-colors duration-300">
           
           {/* Header */}
           <div className="flex items-center justify-between mb-6 px-1">
             <button 
               onClick={handlePrevMonth}
-              className="p-1.5 rounded-md hover:bg-slate-100 text-slate-600 transition-colors"
+              className="p-1.5 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 transition-colors"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
-            <h4 className="font-bold text-slate-800 text-[15px]">
+            <h4 className="font-bold text-slate-800 dark:text-white text-[15px]">
               {formatMonthYear(currentMonth)}
             </h4>
             <button 
               onClick={handleNextMonth}
-              className="p-1.5 rounded-md hover:bg-slate-100 text-slate-600 transition-colors"
+              className="p-1.5 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 transition-colors"
             >
               <ChevronRight className="w-4 h-4" />
             </button>
@@ -177,10 +177,10 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = ({
                     className={`
                       w-8 h-8 rounded-full flex items-center justify-center text-[13px] font-semibold transition-all
                       ${selected 
-                        ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200' 
+                        ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200 dark:shadow-none' 
                         : dayObj.isCurrentMonth
-                          ? 'text-slate-800 hover:bg-slate-100'
-                          : 'text-slate-400 hover:bg-slate-50 hover:text-slate-600'
+                          ? 'text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
+                          : 'text-slate-400 dark:text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-800/50 hover:text-slate-600 dark:hover:text-slate-300'
                       }
                     `}
                   >

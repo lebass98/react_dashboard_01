@@ -25,7 +25,7 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onPageChange, currentPage }) => {
   return (
     <aside 
-      className={`fixed lg:static inset-y-0 left-0 z-30 w-[280px] bg-white border-r border-slate-200 flex flex-col transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}
+      className={`fixed lg:static inset-y-0 left-0 z-30 w-[280px] bg-white dark:bg-[#1A222C] border-r border-slate-200 dark:border-slate-800 flex flex-col transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}
     >
       {/* Logo Area */}
       <div className="h-[72px] lg:h-[80px] flex items-center justify-between px-6 border-b border-transparent">
@@ -37,24 +37,24 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onPageChange, curren
             </svg>
           </div>
           <div>
-            <h1 className="text-xl font-bold text-slate-900 leading-tight">Nexus</h1>
-            <p className="text-[11px] text-slate-500 font-medium">Admin Panel</p>
+            <h1 className="text-xl font-bold text-slate-900 dark:text-white leading-tight">Nexus</h1>
+            <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Admin Panel</p>
           </div>
         </div>
         <button 
           onClick={onClose}
-          className="lg:hidden p-1 rounded-md text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-colors"
+          className="lg:hidden p-1 rounded-md text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
         >
           <X className="w-5 h-5" />
         </button>
       </div>
 
       {/* Navigation */}
-      <div className="flex-1 overflow-y-auto py-6 px-4 space-y-1 custom-scrollbar shadow-[0_25px_50px_-12px_#00000040] bg-slate-50/30">
+      <div className="flex-1 overflow-y-auto py-6 px-4 space-y-1 custom-scrollbar shadow-[0_25px_50px_-12px_#00000040] dark:shadow-none bg-slate-50/30 dark:bg-[#1A222C]">
         {/* Dashboard Item */}
         <div 
           onClick={() => { onPageChange('dashboard'); onClose(); }}
-          className={`group flex items-center justify-between px-3 py-2.5 rounded-xl cursor-pointer transition-all ${currentPage === 'dashboard' ? 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-md shadow-indigo-200' : 'text-slate-500 hover:text-indigo-600 hover:bg-indigo-50/50'}`}
+          className={`group flex items-center justify-between px-3 py-2.5 rounded-xl cursor-pointer transition-all ${currentPage === 'dashboard' ? 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-md shadow-indigo-200 dark:shadow-none' : 'text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white hover:bg-indigo-50/50 dark:hover:bg-slate-800/50'}`}
         >
           <div className="flex items-center gap-3">
             <LayoutDashboard className="w-5 h-5" />
@@ -134,10 +134,10 @@ const NavItem: React.FC<NavItemProps> = ({
     <div>
       <div 
         onClick={() => hasSubmenu && setIsOpen(!isOpen)}
-        className={`group flex items-center justify-between px-3 py-2.5 rounded-xl text-slate-500 hover:text-indigo-600 hover:bg-indigo-50/50 cursor-pointer transition-all ${isOpen || isActive ? 'bg-indigo-50/30' : ''} ${isActive ? 'text-indigo-600' : ''}`}
+        className={`group flex items-center justify-between px-3 py-2.5 rounded-xl text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white hover:bg-indigo-50/50 dark:hover:bg-slate-800/50 cursor-pointer transition-all ${isOpen || isActive ? 'bg-indigo-50/30 dark:bg-slate-800/30' : ''} ${isActive ? 'text-indigo-600 dark:text-white' : ''}`}
       >
         <div className="flex items-center gap-3">
-          <Icon className={`w-5 h-5 ${isActive ? 'text-indigo-600' : ''}`} />
+          <Icon className={`w-5 h-5 ${isActive ? 'text-indigo-600 dark:text-white' : ''}`} />
           <span className={`font-medium text-sm ${isActive ? 'font-bold' : ''}`}>{label}</span>
         </div>
         <div className="flex items-center gap-2">
@@ -147,7 +147,7 @@ const NavItem: React.FC<NavItemProps> = ({
             </span>
           )}
           {hasSubmenu && (
-            <ChevronDown className={`w-4 h-4 text-slate-400 group-hover:text-indigo-500 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
+            <ChevronDown className={`w-4 h-4 text-slate-400 group-hover:text-indigo-500 dark:group-hover:text-white transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
           )}
         </div>
       </div>
@@ -162,7 +162,7 @@ const NavItem: React.FC<NavItemProps> = ({
               <div 
                 key={idx} 
                 onClick={() => onSubItemClick && onSubItemClick(item)}
-                className={`text-sm font-medium py-1.5 cursor-pointer transition-colors ${activeSubItem === item ? 'text-indigo-600 font-bold' : 'text-slate-500 hover:text-indigo-600'}`}
+                className={`text-sm font-medium py-1.5 cursor-pointer transition-colors ${activeSubItem === item ? 'text-indigo-600 dark:text-white font-bold' : 'text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white'}`}
               >
                 {item}
               </div>

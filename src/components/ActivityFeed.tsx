@@ -8,62 +8,60 @@ const ActivityFeed: React.FC = () => {
       title: 'New user registered', 
       desc: 'Alex Johnson joined the platform.', 
       time: '2 mins ago',
-      icon: <UserPlus className="w-4 h-4 text-indigo-600" />,
-      bg: 'bg-indigo-50 border-indigo-100'
+      color: 'bg-indigo-500'
     },
     { 
       type: 'system', 
       title: 'Database backup completed', 
       desc: 'Weekly automated backup finished.', 
       time: '1 hour ago',
-      icon: <CheckCircle2 className="w-4 h-4 text-emerald-600" />,
-      bg: 'bg-emerald-50 border-emerald-100'
+      color: 'bg-emerald-500'
     },
     { 
       type: 'alert', 
       title: 'High CPU usage detected', 
       desc: 'Server-01 reached 90% CPU load.', 
       time: '3 hours ago',
-      icon: <AlertTriangle className="w-4 h-4 text-amber-600" />,
-      bg: 'bg-amber-50 border-amber-100'
+      color: 'bg-amber-500'
     },
     { 
       type: 'system', 
       title: 'Server maintenance', 
       desc: 'Scheduled maintenance completed.', 
       time: '5 hours ago',
-      icon: <Server className="w-4 h-4 text-slate-600" />,
-      bg: 'bg-slate-50 border-slate-200'
+      color: 'bg-slate-500'
     },
   ];
 
   return (
-    <div className="bg-white rounded-xl p-6 border border-slate-100 h-full flex flex-col">
-      <div className="flex justify-between items-end mb-6">
+    <div className="bg-white dark:bg-[#1A222C] rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm p-6 h-full flex flex-col transition-colors duration-300">
+      <div className="flex justify-between items-center mb-6">
         <div>
-          <h3 className="text-lg font-bold text-slate-800">Activity Feed</h3>
-          <p className="text-sm text-slate-500 font-medium mt-0.5">Recent system activities</p>
+          <h3 className="text-lg font-bold text-slate-800 dark:text-white">Recent Activity</h3>
+          <p className="text-sm text-slate-500 dark:text-slate-400 font-medium">System updates</p>
         </div>
-        <button className="text-sm font-semibold text-indigo-600 hover:text-indigo-700 transition-colors">
-          View all
-        </button>
       </div>
 
-      <div className="flex-1 space-y-5">
-        {activities.map((activity, idx) => (
-          <div key={idx} className="flex gap-4">
-            <div className={`w-9 h-9 rounded-full flex items-center justify-center border shrink-0 ${activity.bg}`}>
-              {activity.icon}
-            </div>
-            <div className="flex-1 min-w-0">
-              <div className="flex justify-between items-start mb-0.5">
-                <p className="text-sm font-bold text-slate-800 truncate">{activity.title}</p>
-                <span className="text-xs font-medium text-slate-400 shrink-0 ml-2">{activity.time}</span>
+      <div className="flex-1 relative">
+        {/* Vertical Line */}
+        <div className="absolute top-2 bottom-0 left-[11px] w-0.5 bg-slate-100 dark:bg-slate-800"></div>
+
+        <div className="space-y-6 relative">
+          {activities.map((activity, idx) => (
+            <div key={idx} className="flex gap-4">
+              <div className="relative mt-1 shrink-0">
+                <div className={`w-6 h-6 rounded-full border-4 border-white dark:border-[#1A222C] flex items-center justify-center ${activity.color} z-10 relative`}>
+                  <div className="w-2 h-2 rounded-full bg-white"></div>
+                </div>
               </div>
-              <p className="text-sm text-slate-500 truncate">{activity.desc}</p>
+              <div>
+                <p className="text-sm font-semibold text-slate-800 dark:text-white leading-tight mb-0.5">{activity.title}</p>
+                <span className="text-xs font-medium text-slate-500 dark:text-slate-400">{activity.time}</span>
+                <p className="text-sm text-slate-500 dark:text-slate-400 truncate">{activity.desc}</p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

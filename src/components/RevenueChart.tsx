@@ -18,21 +18,21 @@ const RevenueChart: React.FC = () => {
   ];
 
   return (
-    <div className="bg-white rounded-xl p-6 border border-slate-100 h-full flex flex-col">
-      <div className="flex justify-between items-start mb-8">
+    <div className="bg-white dark:bg-[#1A222C] rounded-xl p-6 shadow-sm border border-slate-100 dark:border-slate-800 h-full flex flex-col transition-colors duration-300">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
         <div>
-          <h3 className="text-lg font-bold text-slate-800">Revenue Overview</h3>
-          <p className="text-sm text-slate-500 font-medium mt-0.5">Monthly revenue and expenses</p>
+          <h3 className="text-lg font-bold text-slate-800 dark:text-white">Revenue Overview</h3>
+          <p className="text-sm text-slate-500 dark:text-slate-400 font-medium">Monthly revenue analysis</p>
         </div>
-        <div className="flex items-center gap-4 text-sm font-medium">
-          <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-indigo-500"></span>
-            <span className="text-slate-500">Revenue</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-slate-400"></span>
-            <span className="text-slate-500">Expenses</span>
-          </div>
+        <div className="flex items-center gap-2">
+          {['Week', 'Month', 'Year'].map((period) => (
+            <button 
+              key={period}
+              className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${period === 'Month' ? 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400' : 'text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800'}`}
+            >
+              {period}
+            </button>
+          ))}
         </div>
       </div>
 
@@ -41,10 +41,10 @@ const RevenueChart: React.FC = () => {
         <div className="absolute inset-0 flex flex-col justify-between">
           {[100, 75, 50, 25, 0].map((val, i) => (
             <div key={i} className="flex items-center w-full h-0">
-              <span className="text-xs text-slate-400 w-10 text-right pr-4 shrink-0 font-medium">
+              <span className="text-xs text-slate-400 dark:text-slate-500 w-10 text-right pr-4 shrink-0 font-medium">
                 ${val}k
               </span>
-              {i !== 4 && <div className="flex-1 border-t border-slate-100"></div>}
+              {i !== 4 && <div className="flex-1 border-t border-slate-100 dark:border-slate-800"></div>}
             </div>
           ))}
         </div>
@@ -65,7 +65,7 @@ const RevenueChart: React.FC = () => {
                   style={{ height: `${item.expenses}%` }}
                 ></div>
               </div>
-              <span className="mt-4 text-xs font-semibold text-slate-400 group-hover:text-slate-600 transition-colors">
+              <span className="mt-4 text-xs font-semibold text-slate-400 group-hover:text-slate-600 dark:group-hover:text-slate-200 transition-colors">
                 {item.month}
               </span>
             </div>

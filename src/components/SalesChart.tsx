@@ -27,10 +27,10 @@ const SalesChart: React.FC = () => {
   `;
 
   return (
-    <div className="bg-white rounded-xl p-6 border border-slate-100 flex flex-col h-full">
+    <div className="bg-white dark:bg-[#1A222C] rounded-xl p-6 shadow-sm border border-slate-100 dark:border-slate-800 h-full flex flex-col transition-colors duration-300">
       <div className="mb-8">
-        <h3 className="text-lg font-bold text-slate-800">Sales by Category</h3>
-        <p className="text-sm text-slate-500 font-medium mt-0.5">Product distribution</p>
+        <h3 className="text-lg font-bold text-slate-800 dark:text-white">Sales by Category</h3>
+        <p className="text-sm text-slate-500 dark:text-slate-400 font-medium mt-0.5">Product distribution</p>
       </div>
 
       <div className="flex-1 flex flex-col items-center justify-center">
