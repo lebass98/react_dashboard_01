@@ -47,7 +47,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
       </div>
 
       {/* Navigation */}
-      <div className="flex-1 overflow-y-auto py-6 px-4 space-y-1 custom-scrollbar">
+      <div className="flex-1 overflow-y-auto py-6 px-4 space-y-1 custom-scrollbar shadow-[0_25px_50px_-12px_#00000040] bg-slate-50/30">
         {/* Active Item */}
         <div className="group flex items-center justify-between px-3 py-2.5 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-md shadow-indigo-200 cursor-pointer">
           <div className="flex items-center gap-3">
@@ -70,19 +70,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
       </div>
 
       {/* User Profile Footer */}
-      <div className="p-4 border-t border-slate-100">
-        <div className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-slate-50 cursor-pointer transition-colors">
-          <img 
-            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" 
-            alt="Alex Johnson" 
-            className="w-10 h-10 rounded-full border-2 border-white shadow-sm"
-          />
-          <div className="flex-1 min-w-0">
-            <p className="text-sm font-semibold text-slate-900 truncate">Alex Johnson</p>
-            <p className="text-xs text-slate-500 truncate">Administrator</p>
-          </div>
-        </div>
-      </div>
+
     </aside>
   );
 };
