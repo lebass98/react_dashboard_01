@@ -76,25 +76,31 @@ const App: React.FC = () => {
     return (
       <div className="space-y-6">
         {/* Top Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2 space-y-6">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
+          <div className="xl:col-span-2 flex flex-col gap-6">
+            {/* Stat Cards Row */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 h-[140px]">
               <StatCard
                 title="Customers"
                 value="3,782"
                 icon={<Users className="w-5 h-5 text-[#3C50E0]" />}
                 trend={11.01}
+                className="h-full"
               />
               <StatCard
                 title="Orders"
                 value="5,359"
                 icon={<Package className="w-5 h-5 text-[#3C50E0]" />}
                 trend={-9.05}
+                className="h-full"
               />
             </div>
-            <MonthlySalesChart />
+            {/* Monthly Sales Chart takes remaining space */}
+            <div className="flex-1 min-h-[350px]">
+              <MonthlySalesChart />
+            </div>
           </div>
-          <div className="lg:col-span-1">
+          <div className="xl:col-span-1 h-full min-h-[514px]">
             <MonthlyTargetCard />
           </div>
         </div>

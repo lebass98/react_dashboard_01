@@ -1,65 +1,74 @@
 import React from 'react';
 import { MoreVertical } from 'lucide-react';
+import MapOne from './MapOne';
 
 const CustomersDemographic: React.FC = () => {
     return (
-        <div className="bg-white dark:bg-[#1A222C] rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-slate-800 transition-all duration-300 flex flex-col h-full">
-            <div className="flex justify-between items-start mb-4">
+        <div className="bg-white dark:bg-[#1A222C] rounded-sm p-7 border border-[#E2E8F0] dark:border-[#2E3A47] transition-all duration-300 flex flex-col h-full">
+            <div className="flex justify-between items-start mb-6">
                 <div>
-                    <h3 className="text-lg font-bold text-slate-800 dark:text-white">Customers Demographic</h3>
-                    <p className="text-sm text-slate-400 font-medium">Number of customer based on country</p>
+                    <h3 className="text-xl font-bold text-[#1C2434] dark:text-white mb-1">Customers Demographic</h3>
+                    <p className="text-sm text-[#64748B] dark:text-[#8A99AF] font-medium">Number of customer based on country</p>
                 </div>
-                <button className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-300">
+                <button className="text-[#64748B] hover:text-[#1C2434] dark:hover:text-white mt-1">
                     <MoreVertical className="w-5 h-5" />
                 </button>
             </div>
 
-            <div className="flex-1 py-8">
-                {/* Simplified World Map PlaceHolder */}
-                <div className="w-full h-40 bg-slate-50 dark:bg-slate-800/50 rounded-2xl relative overflow-hidden mb-8">
-                    <svg className="w-full h-full text-slate-200 dark:text-slate-700 opacity-50" viewBox="0 0 400 200" fill="currentColor">
-                        <path d="M50 80h20l10 20h20l10-20h30v40H50z M200 60h40l10 30h30v50h-80z M300 100h50v40h-50z" />
-                    </svg>
-                    {/* Pins */}
-                    <div className="absolute top-[85px] left-[65px] w-2 h-2 bg-[#3C50E0] rounded-full border-2 border-white shadow-sm"></div>
-                    <div className="absolute top-[65px] left-[185px] w-2 h-2 bg-[#3C50E0] rounded-full border-2 border-white shadow-sm"></div>
-                    <div className="absolute top-[105px] left-[205px] w-2 h-2 bg-[#3C50E0] rounded-full border-2 border-white shadow-sm"></div>
+            <div className="flex-1 pb-2">
+                {/* World Map Component */}
+                <div className="w-full bg-[#F7F9FC] dark:bg-[#1A222C] border border-[#E2E8F0] dark:border-[#2E3A47] rounded-xl mb-8 flex justify-center items-center">
+                    <MapOne />
                 </div>
 
+                {/* Country List Rows */}
                 <div className="space-y-6">
-                    <div className="space-y-2">
-                        <div className="flex justify-between items-center">
-                            <div className="flex items-center gap-3">
-                                <div className="w-8 h-6 rounded bg-slate-100 dark:bg-slate-800 flex items-center justify-center overflow-hidden border border-slate-200 dark:border-slate-700">
-                                    <span className="text-[10px] font-bold">🇺🇸</span>
-                                </div>
-                                <div>
-                                    <p className="text-sm font-bold text-slate-800 dark:text-white leading-tight">USA</p>
-                                    <p className="text-xs text-slate-400 font-medium">2,379 Customers</p>
-                                </div>
+                    {/* USA */}
+                    <div className="flex items-center justify-between group">
+                        <div className="flex items-center gap-4 w-[200px]">
+                            <div className="w-10 h-10 rounded-full flex items-center justify-center overflow-hidden border border-[#E2E8F0] dark:border-[#2E3A47] shrink-0">
+                                {/* SVG Flag Placeholder for USA */}
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-full h-full object-cover">
+                                    <path fill="#e31d1c" d="M0 0h512v512H0z" />
+                                    <path fill="#f8f9fa" d="M0 58.18h512v58.18H0zm0 116.36h512v58.18H0zm0 116.36h512v58.18H0zm0 116.36h512v58.18H0z" />
+                                    <path fill="#0b1b95" d="M0 0h244.36v290.9H0z" />
+                                    <path fill="#f8f9fa" d="M34.9 34.9h23.2v23.2H34.9zm58.1 0h23.2v23.2H93.1zm58.1 0h23.2v23.2h-23.2zm-87.2 46.5h23.2v23.2H64zm58.1 0h23.2v23.2h-23.2zm58.1 0h23.2v23.2h-23.2zm-87.2 46.5h23.2v23.2H64zm58.1 0h23.2v23.2h-23.2zm58.1 0h23.2v23.2h-23.2zm-87.2 46.6h23.2v23.2H64zm58.1 0h23.2v23.2h-23.2zm58.1 0h23.2v23.2h-23.2zm-87.2 46.5h23.2v23.2H64zm58.1 0h23.2v23.2h-23.2zm58.1 0h23.2v23.2h-23.2z" />
+                                </svg>
                             </div>
-                            <span className="text-sm font-bold text-slate-800 dark:text-white">79%</span>
+                            <div>
+                                <p className="text-[15px] font-bold text-[#1C2434] dark:text-white mb-0.5">USA</p>
+                                <p className="text-[13px] text-[#64748B] dark:text-[#8A99AF] font-medium">2,379 Customers</p>
+                            </div>
                         </div>
-                        <div className="h-2 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                            <div className="h-full bg-[#3C50E0] rounded-full" style={{ width: '79%' }}></div>
+                        <div className="flex-1 flex items-center justify-end gap-5">
+                            <div className="w-[120px] max-w-full h-2.5 bg-[#E2E8F0] dark:bg-[#2E3A47] rounded-full overflow-hidden flex">
+                                <div className="h-full bg-[#3C50E0] rounded-full" style={{ width: '79%' }}></div>
+                            </div>
+                            <span className="text-[15px] font-bold text-[#1C2434] dark:text-white w-10 text-right">79%</span>
                         </div>
                     </div>
 
-                    <div className="space-y-2">
-                        <div className="flex justify-between items-center">
-                            <div className="flex items-center gap-3">
-                                <div className="w-8 h-6 rounded bg-slate-100 dark:bg-slate-800 flex items-center justify-center overflow-hidden border border-slate-200 dark:border-slate-700">
-                                    <span className="text-[10px] font-bold">🇫🇷</span>
-                                </div>
-                                <div>
-                                    <p className="text-sm font-bold text-slate-800 dark:text-white leading-tight">France</p>
-                                    <p className="text-xs text-slate-400 font-medium">589 Customers</p>
-                                </div>
+                    {/* France */}
+                    <div className="flex items-center justify-between group">
+                        <div className="flex items-center gap-4 w-[200px]">
+                            <div className="w-10 h-10 rounded-full flex items-center justify-center overflow-hidden border border-[#E2E8F0] dark:border-[#2E3A47] shrink-0">
+                                {/* SVG Flag Placeholder for France */}
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-full h-full object-cover">
+                                    <path fill="#f8f9fa" d="M0 0h512v512H0z" />
+                                    <path fill="#0b1b95" d="M0 0h170.6v512H0z" />
+                                    <path fill="#e31d1c" d="M341.3 0h170.7v512H341.3z" />
+                                </svg>
                             </div>
-                            <span className="text-sm font-bold text-slate-800 dark:text-white">23%</span>
+                            <div>
+                                <p className="text-[15px] font-bold text-[#1C2434] dark:text-white mb-0.5">France</p>
+                                <p className="text-[13px] text-[#64748B] dark:text-[#8A99AF] font-medium">589 Customers</p>
+                            </div>
                         </div>
-                        <div className="h-2 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                            <div className="h-full bg-[#80CAEE] rounded-full" style={{ width: '23%' }}></div>
+                        <div className="flex-1 flex items-center justify-end gap-5">
+                            <div className="w-[120px] max-w-full h-2.5 bg-[#E2E8F0] dark:bg-[#2E3A47] rounded-full overflow-hidden flex">
+                                <div className="h-full bg-[#3C50E0] rounded-full" style={{ width: '23%' }}></div>
+                            </div>
+                            <span className="text-[15px] font-bold text-[#1C2434] dark:text-white w-10 text-right">23%</span>
                         </div>
                     </div>
                 </div>

@@ -19,9 +19,11 @@ const StatCard: React.FC<StatCardProps> = ({
   const isPositive = trend >= 0;
 
   return (
-    <div className={`bg-white dark:bg-[#1A222C] rounded-sm p-7 border border-[#E2E8F0] dark:border-[#2E3A47] transition-all duration-300 ${className}`}>
-      <div className={`w-11.5 h-11.5 rounded-full bg-[#EFF4FB] dark:bg-[#2E3A47] flex items-center justify-center`}>
-        {icon}
+    <div className={`bg-white dark:bg-[#1A222C] rounded-sm p-7 border border-[#E2E8F0] dark:border-[#2E3A47] transition-all duration-300 flex flex-col justify-between ${className}`}>
+      <div>
+        <div className={`w-11.5 h-11.5 rounded-full bg-[#EFF4FB] dark:bg-[#2E3A47] flex items-center justify-center`}>
+          {icon}
+        </div>
       </div>
 
       <div className="mt-4 flex items-end justify-between">
