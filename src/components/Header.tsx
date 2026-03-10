@@ -1,27 +1,28 @@
 import React from 'react';
-import { 
-  Menu, 
-  Search, 
-  Filter, 
-  Plus, 
-  Moon, 
+import {
+  Menu,
+  Search,
+  Filter,
+  Plus,
+  Moon,
   Sun,
-  Bell, 
-  Settings 
+  Bell,
+  Settings
 } from 'lucide-react';
 
 interface HeaderProps {
   onMenuClick: () => void;
   isDarkMode: boolean;
   toggleDarkMode: () => void;
+  onLogout: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ onMenuClick, isDarkMode, toggleDarkMode }) => {
+const Header: React.FC<HeaderProps> = ({ onMenuClick, isDarkMode, toggleDarkMode, onLogout }) => {
   return (
     <header className="fixed top-0 right-0 left-0 lg:left-[280px] h-[72px] lg:h-[80px] px-4 sm:px-6 lg:px-8 flex items-center justify-between bg-white dark:bg-[#1A222C] border-b border-slate-200 dark:border-slate-800 z-10 transition-all duration-300">
       {/* Left side: Title and Greetings */}
       <div className="flex items-center gap-4 lg:gap-6">
-        <button 
+        <button
           onClick={onMenuClick}
           className="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white lg:hidden p-1 -ml-1 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
         >
@@ -60,13 +61,13 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, isDarkMode, toggleDarkMode
         </button>
 
         <div className="flex items-center gap-0.5 sm:gap-1 mx-1 sm:mx-2">
-          <button 
+          <button
             onClick={toggleDarkMode}
             className="hidden sm:block p-1.5 sm:p-2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-all"
           >
             {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
           </button>
-          
+
           <div className="relative">
             <button className="p-1.5 sm:p-2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-all">
               <Bell className="w-5 h-5" />
@@ -80,15 +81,18 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, isDarkMode, toggleDarkMode
         </div>
 
         {/* Profile block */}
-        <div className="flex items-center gap-2 sm:gap-3 pl-2 sm:pl-4 border-l border-slate-200 dark:border-slate-800 cursor-pointer">
-          <img 
-            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" 
-            alt="Alex Johnson" 
+        <div
+          onClick={onLogout}
+          className="flex items-center gap-2 sm:gap-3 pl-2 sm:pl-4 border-l border-slate-200 dark:border-slate-800 cursor-pointer hover:opacity-80 group relative"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+            alt="Alex Johnson"
             className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border-2 border-white dark:border-slate-800 shadow-sm"
           />
           <div className="hidden md:block flex-1 min-w-0">
             <p className="text-sm font-semibold text-slate-900 dark:text-white leading-tight">Alex Johnson</p>
-            <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Administrator</p>
+            <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium group-hover:text-red-500 transition-colors">Logout</p>
           </div>
         </div>
       </div>
