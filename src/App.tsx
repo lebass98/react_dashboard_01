@@ -7,6 +7,7 @@ import SalesChart from './components/SalesChart';
 import RecentOrders from './components/RecentOrders';
 import ActivityFeed from './components/ActivityFeed';
 import FormElements from './components/FormElements';
+import FormLayout from './components/FormLayout';
 import { DollarSign, Users, ShoppingCart, Eye } from 'lucide-react';
 
 const App: React.FC = () => {
@@ -24,6 +25,9 @@ const App: React.FC = () => {
   const renderContent = () => {
     if (currentPage === 'form-elements') {
       return <FormElements />;
+    }
+    if (currentPage === 'form-layout') {
+      return <FormLayout />;
     }
 
     return (

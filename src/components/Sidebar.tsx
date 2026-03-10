@@ -76,10 +76,14 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onPageChange, curren
           subItems={['Form Elements', 'Form Layout']} 
           onSubItemClick={(sub) => { 
             if (sub === 'Form Elements') onPageChange('form-elements');
+            if (sub === 'Form Layout') onPageChange('form-layout');
             onClose();
           }}
-          activeSubItem={currentPage === 'form-elements' ? 'Form Elements' : undefined}
-          isActive={currentPage === 'form-elements'}
+          activeSubItem={
+            currentPage === 'form-elements' ? 'Form Elements' : 
+            currentPage === 'form-layout' ? 'Form Layout' : undefined
+          }
+          isActive={currentPage === 'form-elements' || currentPage === 'form-layout'}
         />
 
         <NavItem icon={Box} label="Inventory" badge="847" />
