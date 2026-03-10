@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, Copy, Upload, ChevronDown, CreditCard, Eye, X } from 'lucide-react';
+import { Mail, Copy, Upload, ChevronDown, CreditCard, Eye, X, Check } from 'lucide-react';
 
 const FormElements: React.FC = () => {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -318,21 +318,21 @@ const FormElements: React.FC = () => {
             <div className="flex flex-wrap gap-8 items-center pt-2">
               <label className="flex items-center gap-2 cursor-pointer group">
                 <input type="checkbox" className="hidden" checked={checkbox1} onChange={(e) => setCheckbox1(e.target.checked)} />
-                <div className={`w-5 h-5 rounded border flex items-center justify-center transition-all ${checkbox1 ? 'border-indigo-500 bg-indigo-500' : 'border-slate-300 group-hover:border-indigo-500'}`}>
-                  {checkbox1 && <div className="w-2 h-2 rounded-sm bg-white"></div>}
+                <div className={`w-5 h-5 rounded-[0.25rem] border flex items-center justify-center transition-all ${checkbox1 ? 'border-blue-500 bg-blue-500' : 'border-slate-300 group-hover:border-blue-500'}`}>
+                  {checkbox1 && <Check className="w-3.5 h-3.5 text-white" strokeWidth={3} />}
                 </div>
                 <span className={`text-sm font-medium ${checkbox1 ? 'text-slate-800' : 'text-slate-600'}`}>Default</span>
               </label>
               <label className="flex items-center gap-2 cursor-pointer group">
                 <input type="checkbox" className="hidden" checked={checkbox2} onChange={(e) => setCheckbox2(e.target.checked)} />
-                <div className={`w-5 h-5 rounded border flex items-center justify-center transition-all ${checkbox2 ? 'border-indigo-500 bg-indigo-500' : 'border-slate-300 group-hover:border-indigo-500'}`}>
-                  {checkbox2 && <div className="w-2 h-2 rounded-sm bg-white"></div>}
+                <div className={`w-5 h-5 rounded-[0.25rem] border flex items-center justify-center transition-all ${checkbox2 ? 'border-blue-500 bg-blue-500' : 'border-slate-300 group-hover:border-blue-500'}`}>
+                  {checkbox2 && <Check className="w-3.5 h-3.5 text-white" strokeWidth={3} />}
                 </div>
                 <span className={`text-sm font-medium ${checkbox2 ? 'text-slate-800' : 'text-slate-600'}`}>Checked</span>
               </label>
               <label className="flex items-center gap-2 cursor-not-allowed opacity-50">
                 <input type="checkbox" disabled className="hidden" />
-                <div className="w-5 h-5 rounded border border-slate-200 bg-slate-50 flex items-center justify-center"></div>
+                <div className="w-5 h-5 rounded-[0.25rem] border border-slate-200 bg-slate-50 flex items-center justify-center"></div>
                 <span className="text-sm font-medium text-slate-400">Disabled</span>
               </label>
             </div>
