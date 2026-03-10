@@ -2,15 +2,16 @@ import React, { useState, useEffect } from 'react';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import StatCard from './components/StatCard';
-import RevenueChart from './components/RevenueChart';
-import SalesChart from './components/SalesChart';
 import RecentOrders from './components/RecentOrders';
-import ActivityFeed from './components/ActivityFeed';
 import FormElements from './components/FormElements';
 import FormLayout from './components/FormLayout';
 import LoginPage from './components/LoginPage';
 import SignUpPage from './components/SignUpPage';
-import { DollarSign, Users, ShoppingCart, Eye } from 'lucide-react';
+import MonthlyTargetCard from './components/MonthlyTargetCard';
+import MonthlySalesChart from './components/MonthlySalesChart';
+import StatisticsChart from './components/StatisticsChart';
+import CustomersDemographic from './components/CustomersDemographic';
+import { Users, Package } from 'lucide-react';
 
 const App: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
@@ -74,73 +75,42 @@ const App: React.FC = () => {
 
     return (
       <div className="space-y-6">
-        {/* Top Stats Row */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
-          <StatCard
-            title="Total Revenue"
-            value="$124,563"
-            icon={<DollarSign className="w-5 h-5" />}
-            iconBgColor="bg-emerald-50"
-            iconColor="text-emerald-500"
-            trend={12.5}
-            trendText="vs last month"
-            progress={80}
-            progressColor="bg-emerald-500"
-          />
-          <StatCard
-            title="Active Users"
-            value="8,549"
-            icon={<Users className="w-5 h-5" />}
-            iconBgColor="bg-blue-50"
-            iconColor="text-blue-500"
-            trend={8.2}
-            trendText="vs last month"
-            progress={65}
-            progressColor="bg-gradient-to-r from-indigo-500 to-purple-500"
-          />
-          <StatCard
-            title="Total Orders"
-            value="2,847"
-            icon={<ShoppingCart className="w-5 h-5" />}
-            iconBgColor="bg-purple-50"
-            iconColor="text-purple-500"
-            trend={15.3}
-            trendText="vs last month"
-            progress={90}
-            progressColor="bg-gradient-to-r from-fuchsia-500 to-pink-500"
-          />
-          <StatCard
-            title="Page Views"
-            value="45,892"
-            icon={<Eye className="w-5 h-5" />}
-            iconBgColor="bg-amber-50"
-            iconColor="text-amber-500"
-            trend={-2.1}
-            trendText="vs last month"
-            progress={45}
-            progressColor="bg-gradient-to-r from-orange-500 to-red-500"
-          />
-        </div>
-
-        {/* Middle Section: Charts */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6">
-          <div className="lg:col-span-2 overflow-x-auto">
-            <div className="min-w-[600px] h-full">
-              <RevenueChart />
+        {/* Top Section */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-2 space-y-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <StatCard
+                title="Customers"
+                value="3,782"
+                icon={<Users className="w-5 h-5 text-[#3C50E0]" />}
+                trend={11.01}
+              />
+              <StatCard
+                title="Orders"
+                value="5,359"
+                icon={<Package className="w-5 h-5 text-[#3C50E0]" />}
+                trend={-9.05}
+              />
             </div>
+            <MonthlySalesChart />
           </div>
           <div className="lg:col-span-1">
-            <SalesChart />
+            <MonthlyTargetCard />
           </div>
         </div>
 
-        {/* Bottom Section: Tables and Feeds */}
-        <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 lg:gap-6 pb-8">
+        {/* Middle Section: Statistics Chart */}
+        <div className="w-full">
+          <StatisticsChart />
+        </div>
+
+        {/* Bottom Section: Demographic and Orders */}
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 pb-8">
+          <div className="xl:col-span-1">
+            <CustomersDemographic />
+          </div>
           <div className="xl:col-span-2 overflow-x-auto">
             <RecentOrders />
-          </div>
-          <div className="xl:col-span-1">
-            <ActivityFeed />
           </div>
         </div>
       </div>

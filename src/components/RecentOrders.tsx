@@ -1,70 +1,113 @@
 import React from 'react';
-import { Package } from 'lucide-react';
+import { SlidersHorizontal } from 'lucide-react';
 
 const RecentOrders: React.FC = () => {
   const orders = [
-    { id: '#ORD-001', customer: 'Sarah Connor', product: 'MacBook Pro 16"', amount: '$2,499.00', status: 'Paid', date: 'Oct 24, 2023' },
-    { id: '#ORD-002', customer: 'John Smith', product: 'iPhone 15 Pro Max', amount: '$1,199.00', status: 'Pending', date: 'Oct 24, 2023' },
-    { id: '#ORD-003', customer: 'Emma Watson', product: 'AirPods Pro 2', amount: '$249.00', status: 'Paid', date: 'Oct 23, 2023' },
-    { id: '#ORD-004', customer: 'Michael Jordan', product: 'iPad Air', amount: '$599.00', status: 'Failed', date: 'Oct 23, 2023' },
-    { id: '#ORD-005', customer: 'Bruce Wayne', product: 'Apple Watch Ultra', amount: '$799.00', status: 'Paid', date: 'Oct 22, 2023' },
+    {
+      id: '1',
+      product: 'Macbook pro 13"',
+      variant: '2 Variants',
+      category: 'Laptop',
+      price: '$2399.00',
+      status: 'Delivered',
+      image: '💻'
+    },
+    {
+      id: '2',
+      product: 'Apple Watch Ultra',
+      variant: '1 Variants',
+      category: 'Watch',
+      price: '$879.00',
+      status: 'Pending',
+      image: '⌚'
+    },
+    {
+      id: '3',
+      product: 'iPhone 15 Pro Max',
+      variant: '2 Variants',
+      category: 'SmartPhone',
+      price: '$1869.00',
+      status: 'Delivered',
+      image: '📱'
+    },
+    {
+      id: '4',
+      product: 'iPad Pro 3rd Gen',
+      variant: '2 Variants',
+      category: 'Electronics',
+      price: '$1699.00',
+      status: 'Canceled',
+      image: 'tablet'
+    },
+    {
+      id: '5',
+      product: 'Airpods Pro 2nd Gen',
+      variant: '1 Variants',
+      category: 'Accessories',
+      price: '$240.00',
+      status: 'Delivered',
+      image: '🎧'
+    },
   ];
 
   const statusStyles: { [key: string]: string } = {
-    'Paid': 'bg-emerald-50 text-emerald-600 border border-emerald-200 dark:bg-emerald-900/20 dark:text-emerald-400 dark:border-emerald-700',
-    'Pending': 'bg-amber-50 text-amber-600 border border-amber-200 dark:bg-amber-900/20 dark:text-amber-400 dark:border-amber-700',
-    'Failed': 'bg-rose-50 text-rose-600 border border-rose-200 dark:bg-rose-900/20 dark:text-rose-400 dark:border-rose-700',
-    'default': 'bg-slate-50 text-slate-600 border border-slate-200 dark:bg-slate-900/20 dark:text-slate-400 dark:border-slate-700',
+    'Delivered': 'text-[#10B981] bg-[#10B981]/10',
+    'Pending': 'text-[#FFBA00] bg-[#FFBA00]/10',
+    'Canceled': 'text-[#F64E60] bg-[#F64E60]/10',
   };
 
   return (
-    <div className="bg-white dark:bg-[#1A222C] rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm overflow-hidden h-full flex flex-col transition-colors duration-300">
-      <div className="p-6 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center">
-        <div>
-          <h3 className="text-lg font-bold text-slate-800 dark:text-white">Recent Orders</h3>
-          <p className="text-sm text-slate-500 dark:text-slate-400 font-medium">Latest transactions</p>
+    <div className="bg-white dark:bg-[#1A222C] rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-slate-800 transition-all duration-300 flex flex-col h-full">
+      <div className="flex justify-between items-center mb-10">
+        <h3 className="text-lg font-bold text-slate-800 dark:text-white">Recent Orders</h3>
+        <div className="flex gap-2">
+          <button className="flex items-center gap-2 px-3 py-2 bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-xl text-xs font-bold text-slate-600 dark:text-slate-300 shadow-sm hover:bg-slate-50 transition-all">
+            <SlidersHorizontal className="w-3.5 h-3.5" />
+            <span>Filter</span>
+          </button>
+          <button className="px-3 py-2 bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-xl text-xs font-bold text-slate-600 dark:text-slate-300 shadow-sm hover:bg-slate-50 transition-all">
+            See all
+          </button>
         </div>
-        <button className="text-sm font-semibold text-indigo-600 hover:text-indigo-700 transition-colors">
-          View All
-        </button>
       </div>
 
-      <div className="overflow-x-auto flex-1">
+      <div className="overflow-x-auto">
         <table className="w-full text-left border-collapse">
           <thead>
-            <tr className="bg-slate-50/50 dark:bg-slate-800/50 border-b border-slate-100 dark:border-slate-800">
-              <th className="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Product</th>
-              <th className="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Order ID</th>
-              <th className="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Date</th>
-              <th className="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Amount</th>
-              <th className="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Status</th>
+            <tr className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
+              <th className="pb-6 w-[40%]">Products</th>
+              <th className="pb-6">Category</th>
+              <th className="pb-6">Price</th>
+              <th className="pb-6">Status</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+          <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
             {orders.map((order) => (
-              <tr key={order.id} className="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors group">
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 dark:text-slate-400 group-hover:bg-white dark:group-hover:bg-slate-700 shadow-sm transition-colors">
-                      <Package className="w-5 h-5" />
+              <tr key={order.id} className="group transition-colors">
+                <td className="py-5 whitespace-nowrap">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-slate-50 dark:bg-slate-800/50 flex items-center justify-center text-2xl shadow-sm border border-slate-100 dark:border-slate-700">
+                      {order.image === 'tablet' ? (
+                        <svg className="w-6 h-6 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <rect x="4" y="2" width="16" height="20" rx="2" strokeWidth="2" />
+                          <line x1="12" y1="18" x2="12" y2="18" strokeWidth="3" strokeLinecap="round" />
+                        </svg>
+                      ) : order.image}
                     </div>
                     <div>
-                      <div className="text-sm font-bold text-slate-800 dark:text-white">{order.product}</div>
-                      <div className="text-xs font-medium text-slate-500 dark:text-slate-400">{order.customer}</div>
+                      <p className="text-sm font-bold text-[#2F3367] dark:text-white leading-tight">{order.product}</p>
+                      <p className="text-xs font-medium text-slate-400 mt-0.5">{order.variant}</p>
                     </div>
                   </div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-600 dark:text-slate-300">
-                  {order.id}
+                <td className="py-5 whitespace-nowrap text-sm font-bold text-[#2F3367] dark:text-white opacity-60">
+                  {order.category}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-500 dark:text-slate-400">
-                  {order.date}
+                <td className="py-5 whitespace-nowrap text-sm font-bold text-[#2F3367] dark:text-white opacity-60">
+                  {order.price}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-slate-800 dark:text-white">
-                  {order.amount}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <span className={`inline-flex items-center px-2.5 py-1 rounded-md text-xs font-bold ${statusStyles[order.status] || statusStyles.default}`}>
+                <td className="py-5 whitespace-nowrap">
+                  <span className={`inline-flex items-center px-2 py-1 rounded-md text-[10px] font-extrabold uppercase tracking-tight ${statusStyles[order.status]}`}>
                     {order.status}
                   </span>
                 </td>
