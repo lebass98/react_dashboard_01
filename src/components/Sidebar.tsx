@@ -12,7 +12,8 @@ import {
   Settings,
   ChevronDown,
   X,
-  SquarePen
+  SquarePen,
+  ListTodo
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -67,6 +68,20 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onPageChange, curren
         <NavItem icon={BarChart2} label="Analytics" hasSubmenu subItems={['Overview', 'Real-time', 'Demographics']} />
         <NavItem icon={Users} label="Users" badge="2.4k" hasSubmenu subItems={['All Users', 'Active', 'Banned']} />
         <NavItem icon={ShoppingCart} label="E-commerce" hasSubmenu subItems={['Products', 'Orders', 'Customers', 'Coupons']} />
+        
+        {/* Task Menu */}
+        <NavItem
+          icon={ListTodo}
+          label="Tasks"
+          hasSubmenu
+          subItems={['List']}
+          onSubItemClick={(sub) => {
+            if (sub === 'List') onPageChange('task-list');
+            onClose();
+          }}
+          activeSubItem={currentPage === 'task-list' ? 'List' : undefined}
+          isActive={currentPage === 'task-list'}
+        />
 
         {/* Forms Submenu */}
         <NavItem

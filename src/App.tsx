@@ -11,6 +11,7 @@ import MonthlyTargetCard from './components/MonthlyTargetCard';
 import MonthlySalesChart from './components/MonthlySalesChart';
 import StatisticsChart from './components/StatisticsChart';
 import CustomersDemographic from './components/CustomersDemographic';
+import TaskList from './components/TaskList';
 import { Users, Package } from 'lucide-react';
 
 const App: React.FC = () => {
@@ -71,6 +72,9 @@ const App: React.FC = () => {
     }
     if (currentPage === 'form-layout') {
       return <FormLayout />;
+    }
+    if (currentPage === 'task-list') {
+      return <TaskList />;
     }
 
     return (
