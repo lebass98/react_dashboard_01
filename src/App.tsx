@@ -141,9 +141,23 @@ const App: React.FC = () => {
 
   if (!isAuthenticated) {
     if (authMode === 'signin') {
-      return <LoginPage onLoginSuccess={handleLoginSuccess} onSignUpClick={() => setAuthMode('signup')} />;
+      return (
+        <LoginPage 
+          onLoginSuccess={handleLoginSuccess} 
+          onSignUpClick={() => setAuthMode('signup')} 
+          isDarkMode={isDarkMode}
+          toggleDarkMode={toggleDarkMode}
+        />
+      );
     } else {
-      return <SignUpPage onSignUpSuccess={handleLoginSuccess} onSignInClick={() => setAuthMode('signin')} />;
+      return (
+        <SignUpPage 
+          onSignUpSuccess={handleLoginSuccess} 
+          onSignInClick={() => setAuthMode('signin')} 
+          isDarkMode={isDarkMode}
+          toggleDarkMode={toggleDarkMode}
+        />
+      );
     }
   }
 

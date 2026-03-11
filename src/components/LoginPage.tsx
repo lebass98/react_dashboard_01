@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { Eye, EyeOff, ChevronLeft } from 'lucide-react';
+import { Eye, EyeOff, ChevronLeft, Moon, Sun } from 'lucide-react';
 
 interface LoginPageProps {
     onLoginSuccess: () => void;
     onSignUpClick: () => void;
+    isDarkMode: boolean;
+    toggleDarkMode: () => void;
 }
 
 const GoogleIcon = () => (
@@ -30,7 +32,7 @@ const TailAdminLogo = () => (
     </svg>
 );
 
-const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess, onSignUpClick }) => {
+const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess, onSignUpClick, isDarkMode, toggleDarkMode }) => {
     const [showPassword, setShowPassword] = useState(false);
     const [email, setEmail] = useState('adminnextjs@gmail.com');
     const [password, setPassword] = useState('1234567890');
@@ -41,42 +43,50 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess, onSignUpClick }) 
     };
 
     return (
-        <div className="flex justify-center min-h-screen bg-white font-sans max-h-screen overflow-hidden">
+        <div className="flex justify-center min-h-screen bg-white font-sans max-h-screen overflow-hidden dark:bg-slate-900 transition-colors duration-300">
+            {/* Theme Toggle Button */}
+            <button
+                onClick={toggleDarkMode}
+                className="fixed bottom-6 right-6 w-12 h-12 bg-[#4B62FA] hover:bg-indigo-600 rounded-full flex items-center justify-center text-white shadow-lg shadow-indigo-200 dark:shadow-indigo-900/50 transition-colors z-50"
+            >
+                {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+            </button>
+
             {/* Left Panel: Form Area */}
             <div className="w-full lg:w-1/2 flex flex-col pt-8 px-6 sm:px-12 md:px-24">
                 <button 
                   onClick={() => window.location.reload()} 
-                  className="flex items-center gap-1.5 text-[14px] text-slate-500 hover:text-slate-800 transition-colors self-start mb-auto"
+                  className="flex items-center gap-1.5 text-[14px] text-slate-500 hover:text-slate-800 dark:hover:text-slate-300 transition-colors self-start mb-auto"
                 >
                     <ChevronLeft className="w-4 h-4" />
                     Back to dashboard
                 </button>
 
                 <div className="w-full max-w-[420px] mx-auto mb-auto mt-20">
-                    <h1 className="text-[32px] font-bold text-slate-900 leading-tight mb-2">Sign In</h1>
-                    <p className="text-[14px] text-slate-500 mb-8">Enter your email and password to sign in!</p>
+                    <h1 className="text-[32px] font-bold text-slate-900 dark:text-white leading-tight mb-2">Sign In</h1>
+                    <p className="text-[14px] text-slate-500 dark:text-slate-400 mb-8">Enter your email and password to sign in!</p>
 
                     {/* Social Logins */}
                     <div className="flex gap-4 mb-8">
-                        <button className="flex-1 flex items-center justify-center gap-2 py-3 bg-slate-50 hover:bg-slate-100 rounded-lg text-sm font-semibold text-slate-700 transition-colors border border-transparent">
+                        <button className="flex-1 flex items-center justify-center gap-2 py-3 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg text-sm font-semibold text-slate-700 dark:text-slate-300 transition-colors border border-transparent">
                             <GoogleIcon />
                             Sign in with Google
                         </button>
-                        <button className="flex-1 flex items-center justify-center gap-2 py-3 bg-slate-50 hover:bg-slate-100 rounded-lg text-sm font-semibold text-slate-700 transition-colors border border-transparent">
+                        <button className="flex-1 flex items-center justify-center gap-2 py-3 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg text-sm font-semibold text-slate-700 dark:text-slate-300 transition-colors border border-transparent">
                             <XIcon />
                             Sign in with X
                         </button>
                     </div>
 
                     <div className="relative mb-8 flex items-center">
-                        <div className="flex-grow border-t border-slate-100"></div>
-                        <span className="shrink-0 px-4 text-[13px] text-slate-400">Or</span>
-                        <div className="flex-grow border-t border-slate-100"></div>
+                        <div className="flex-grow border-t border-slate-100 dark:border-slate-800"></div>
+                        <span className="shrink-0 px-4 text-[13px] text-slate-400 dark:text-slate-500">Or</span>
+                        <div className="flex-grow border-t border-slate-100 dark:border-slate-800"></div>
                     </div>
 
                     <form onSubmit={handleSubmit} className="space-y-5">
                         <div className="space-y-1.5">
-                            <label className="text-[13px] font-bold text-slate-700 block">
+                            <label className="text-[13px] font-bold text-slate-700 dark:text-slate-300 block">
                                 Email<span className="text-red-500">*</span>
                             </label>
                             <input
@@ -84,12 +94,12 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess, onSignUpClick }) 
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 placeholder="info@gmail.com"
-                                className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 bg-white text-slate-700 text-sm transition-all"
+                                className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm transition-all"
                             />
                         </div>
 
                         <div className="space-y-1.5">
-                            <label className="text-[13px] font-bold text-slate-700 block">
+                            <label className="text-[13px] font-bold text-slate-700 dark:text-slate-300 block">
                                 Password<span className="text-red-500">*</span>
                             </label>
                             <div className="relative">
@@ -98,12 +108,12 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess, onSignUpClick }) 
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     placeholder="Enter your password"
-                                    className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 bg-white text-slate-700 text-sm transition-all"
+                                    className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm transition-all"
                                 />
                                 <button
                                     type="button"
                                     onClick={() => setShowPassword(!showPassword)}
-                                    className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-indigo-600 transition-colors"
+                                    className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
                                 >
                                     {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                                 </button>
@@ -114,15 +124,15 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess, onSignUpClick }) 
                             <label className="flex items-center gap-2 cursor-pointer group">
                                 <input 
                                     type="checkbox" 
-                                    className="peer appearance-none w-4 h-4 rounded border border-slate-300 checked:bg-indigo-600 checked:border-indigo-600 transition-all cursor-pointer" 
+                                    className="peer appearance-none w-4 h-4 rounded border border-slate-300 dark:border-slate-600 dark:bg-slate-800 checked:bg-indigo-600 checked:border-indigo-600 transition-all cursor-pointer" 
                                 />
                                 <svg className="absolute w-2.5 h-2.5 ml-[-1px] text-white opacity-0 peer-checked:opacity-100 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="4">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                                 </svg>
-                                <span className="text-[13px] font-medium text-slate-600 group-hover:text-slate-800 transition-colors">Keep me logged in</span>
+                                <span className="text-[13px] font-medium text-slate-600 dark:text-slate-400 group-hover:text-slate-800 dark:group-hover:text-slate-300 transition-colors">Keep me logged in</span>
                             </label>
 
-                            <a href="#" className="text-[13px] font-medium text-indigo-600 hover:text-indigo-700 transition-colors">
+                            <a href="#" className="text-[13px] font-medium text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300 transition-colors">
                                 Forgot password?
                             </a>
                         </div>
@@ -135,8 +145,8 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess, onSignUpClick }) 
                         </button>
                     </form>
 
-                    <p className="text-[13px] text-slate-500 mt-6">
-                        Don't have an account? <button onClick={onSignUpClick} className="text-[#4B62FA] font-medium hover:underline">Sign Up</button>
+                    <p className="text-[13px] text-slate-500 dark:text-slate-400 mt-6">
+                        Don't have an account? <button onClick={onSignUpClick} className="text-[#4B62FA] dark:text-indigo-400 font-medium hover:underline">Sign Up</button>
                     </p>
                 </div>
             </div>
