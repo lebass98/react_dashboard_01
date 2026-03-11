@@ -152,16 +152,6 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = ({
     });
   };
 
-  const getLabel = () => {
-    if (isRange) {
-      if (range.start && range.end) {
-        return `${formatDate(range.start)} - ${formatDate(range.end)}`;
-      }
-      if (range.start) return `${formatDate(range.start)} - ...`;
-      return placeholder;
-    }
-    return selectedDate ? formatDate(selectedDate) : placeholder;
-  };
 
   const formatMonthYear = (date: Date) => {
     return date.toLocaleDateString('en-US', {
