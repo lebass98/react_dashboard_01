@@ -122,13 +122,17 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onPageChange, curren
           icon={Layers}
           label="Pages"
           hasSubmenu
-          subItems={['FAQ']}
+          subItems={['FAQ', 'Integrations']}
           onSubItemClick={(sub) => {
             if (sub === 'FAQ') onPageChange('faq');
+            if (sub === 'Integrations') onPageChange('integrations');
             onClose();
           }}
-          activeSubItem={currentPage === 'faq' ? 'FAQ' : undefined}
-          isActive={currentPage === 'faq'}
+          activeSubItem={
+            currentPage === 'faq' ? 'FAQ' :
+              currentPage === 'integrations' ? 'Integrations' : undefined
+          }
+          isActive={currentPage === 'faq' || currentPage === 'integrations'}
         />
 
         <NavItem icon={Box} label="Inventory" badge="847" />

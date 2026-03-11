@@ -14,6 +14,7 @@ import CustomersDemographic from './components/CustomersDemographic';
 import TaskList from './components/TaskList';
 import BasicTables from './components/BasicTables';
 import FAQ from './components/FAQ';
+import Integrations from './components/Integrations';
 import { Users, Package } from 'lucide-react';
 
 const App: React.FC = () => {
@@ -83,6 +84,9 @@ const App: React.FC = () => {
     }
     if (currentPage === 'faq') {
       return <FAQ />;
+    }
+    if (currentPage === 'integrations') {
+      return <Integrations />;
     }
 
     return (
