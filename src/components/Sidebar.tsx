@@ -1,15 +1,7 @@
 import React from 'react';
 import {
   LayoutDashboard,
-  BarChart2,
-  Users,
-  ShoppingCart,
-  Box,
-  Activity,
-  MessageSquare,
   Calendar,
-  FileText,
-  Settings,
   ChevronDown,
   X,
   SquarePen,

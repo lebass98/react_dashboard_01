@@ -8,6 +8,8 @@ import {
   useSensors,
   DragOverlay,
   defaultDropAnimationSideEffects,
+} from '@dnd-kit/core';
+import type {
   DragStartEvent,
   DragOverEvent,
   DragEndEvent,
@@ -362,9 +364,9 @@ const TaskKanban: React.FC = () => {
 
     // Im dropping a Task over another Task
     if (isActiveATask && isOverATask) {
-      setTasks((tasks) => {
-        const activeIndex = tasks.findIndex((t) => t.id === activeId);
-        const overIndex = tasks.findIndex((t) => t.id === overId);
+      setTasks((tasks: Task[]) => {
+        const activeIndex = tasks.findIndex((t: Task) => t.id === activeId);
+        const overIndex = tasks.findIndex((t: Task) => t.id === overId);
 
         if (tasks[activeIndex].columnId !== tasks[overIndex].columnId) {
           tasks[activeIndex].columnId = tasks[overIndex].columnId;
@@ -379,8 +381,8 @@ const TaskKanban: React.FC = () => {
 
     // Im dropping a Task over a column
     if (isActiveATask && isOverAColumn) {
-      setTasks((tasks) => {
-        const activeIndex = tasks.findIndex((t) => t.id === activeId);
+      setTasks((tasks: Task[]) => {
+        const activeIndex = tasks.findIndex((t: Task) => t.id === activeId);
         tasks[activeIndex].columnId = overId as string;
         return arrayMove(tasks, activeIndex, activeIndex);
       });
@@ -402,8 +404,8 @@ const TaskKanban: React.FC = () => {
       const isOverATask = over.data.current?.type === 'Task';
 
       if (isActiveATask && isOverATask) {
-          setTasks((tasks) => {
-              const activeIndex = tasks.findIndex((t) => t.id === activeId);
+          setTasks((tasks: Task[]) => {
+              const activeIndex = tasks.findIndex((t: Task) => t.id === activeId);
               const overIndex = tasks.findIndex((t) => t.id === overId);
               
               if (tasks[activeIndex].columnId !== tasks[overIndex].columnId) {
@@ -518,7 +520,7 @@ const TaskKanban: React.FC = () => {
             <KanbanColumn
               key={col.id}
               column={col}
-              tasks={tasks.filter((t) => t.columnId === col.id)}
+              tasks={tasks.filter((t: Task) => t.columnId === col.id)}
             />
           ))}
 

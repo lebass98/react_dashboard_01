@@ -306,7 +306,7 @@ const Calendar: React.FC = () => {
                <button onClick={handleNext} className="p-1.5 hover:bg-white dark:hover:bg-slate-700 rounded-md transition-all text-slate-600 dark:text-slate-400"><ChevronRight className="w-4 h-4" /></button>
             </div>
             <button 
-              onClick={handleAddEvent}
+              onClick={() => handleAddEvent()}
               className="flex items-center gap-2 px-5 py-2.5 bg-[#4B62FA] hover:bg-indigo-600 rounded-lg text-[13px] font-bold text-white transition-all shadow-lg shadow-indigo-100 dark:shadow-none"
             >
               <Plus className="w-4 h-4" /> Add Event +

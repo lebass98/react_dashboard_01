@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import ReactECharts from 'echarts-for-react';
-import { ChevronRight, Copy, Code, Eye, EyeOff, Check } from 'lucide-react';
+import { ChevronRight, Copy, Eye, EyeOff, Check } from 'lucide-react';
 
 interface ChartCardProps {
   title: string;
@@ -19,8 +19,7 @@ const ChartCard: React.FC<ChartCardProps> = ({ title, option, code }) => {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const defaultCode = code || `<!-- Find the JS file for the following chart at: src/js/charts/echarts/examples/${title.toLowerCase().replace(/\s+/g, '-')} -->
-<div class="echart-${title.toLowerCase().replace(/\s+/g, '-')} min-h-75"></div>`;
+
 
   return (
     <div className="bg-white dark:bg-[#1A222C] rounded-[10px] shadow-sm border border-slate-200 dark:border-slate-800 flex flex-col relative z-10 hover:z-20">
