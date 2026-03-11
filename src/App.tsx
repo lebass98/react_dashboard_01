@@ -79,7 +79,7 @@ const App: React.FC = () => {
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
           <div className="xl:col-span-2 flex flex-col gap-6">
             {/* Stat Cards Row */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 h-[140px]">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <StatCard
                 title="Customers"
                 value="3,782"
