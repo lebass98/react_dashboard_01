@@ -13,7 +13,9 @@ import {
   ChevronDown,
   X,
   SquarePen,
-  ListTodo
+  ListTodo,
+  Table,
+  Layers
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -99,6 +101,34 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onPageChange, curren
               currentPage === 'form-layout' ? 'Form Layout' : undefined
           }
           isActive={currentPage === 'form-elements' || currentPage === 'form-layout'}
+        />
+
+        {/* Tables Submenu */}
+        <NavItem
+          icon={Table}
+          label="Tables"
+          hasSubmenu
+          subItems={['Basic Tables']}
+          onSubItemClick={(sub) => {
+            if (sub === 'Basic Tables') onPageChange('basic-tables');
+            onClose();
+          }}
+          activeSubItem={currentPage === 'basic-tables' ? 'Basic Tables' : undefined}
+          isActive={currentPage === 'basic-tables'}
+        />
+
+        {/* Pages Submenu */}
+        <NavItem
+          icon={Layers}
+          label="Pages"
+          hasSubmenu
+          subItems={['FAQ']}
+          onSubItemClick={(sub) => {
+            if (sub === 'FAQ') onPageChange('faq');
+            onClose();
+          }}
+          activeSubItem={currentPage === 'faq' ? 'FAQ' : undefined}
+          isActive={currentPage === 'faq'}
         />
 
         <NavItem icon={Box} label="Inventory" badge="847" />

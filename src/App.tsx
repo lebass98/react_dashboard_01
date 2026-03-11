@@ -12,6 +12,8 @@ import MonthlySalesChart from './components/MonthlySalesChart';
 import StatisticsChart from './components/StatisticsChart';
 import CustomersDemographic from './components/CustomersDemographic';
 import TaskList from './components/TaskList';
+import BasicTables from './components/BasicTables';
+import FAQ from './components/FAQ';
 import { Users, Package } from 'lucide-react';
 
 const App: React.FC = () => {
@@ -75,6 +77,12 @@ const App: React.FC = () => {
     }
     if (currentPage === 'task-list') {
       return <TaskList />;
+    }
+    if (currentPage === 'basic-tables') {
+      return <BasicTables />;
+    }
+    if (currentPage === 'faq') {
+      return <FAQ />;
     }
 
     return (
