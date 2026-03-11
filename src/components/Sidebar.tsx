@@ -76,13 +76,17 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onPageChange, curren
           icon={ListTodo}
           label="Tasks"
           hasSubmenu
-          subItems={['List']}
+          subItems={['List', 'Kanban']}
           onSubItemClick={(sub) => {
             if (sub === 'List') onPageChange('task-list');
+            if (sub === 'Kanban') onPageChange('task-kanban');
             onClose();
           }}
-          activeSubItem={currentPage === 'task-list' ? 'List' : undefined}
-          isActive={currentPage === 'task-list'}
+          activeSubItem={
+            currentPage === 'task-list' ? 'List' : 
+              currentPage === 'task-kanban' ? 'Kanban' : undefined
+          }
+          isActive={currentPage === 'task-list' || currentPage === 'task-kanban'}
         />
 
         {/* Forms Submenu */}
@@ -138,7 +142,15 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onPageChange, curren
         <NavItem icon={Box} label="Inventory" badge="847" />
         <NavItem icon={Activity} label="Transactions" />
         <NavItem icon={MessageSquare} label="Messages" badge="12" badgeColor="bg-red-500 text-white" />
-        <NavItem icon={Calendar} label="Calendar" />
+        <div
+          onClick={() => { onPageChange('calendar'); onClose(); }}
+          className={`group flex items-center justify-between px-3 py-2.5 rounded-xl cursor-pointer transition-all ${currentPage === 'calendar' ? 'bg-indigo-50/30 dark:bg-slate-800/30 text-indigo-600 dark:text-white' : 'text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white hover:bg-indigo-50/50 dark:hover:bg-slate-800/50'}`}
+        >
+          <div className="flex items-center gap-3">
+            <Calendar className={`w-5 h-5 ${currentPage === 'calendar' ? 'text-indigo-600 dark:text-white' : ''}`} />
+            <span className={`text-sm ${currentPage === 'calendar' ? 'font-bold' : 'font-medium'}`}>Calendar</span>
+          </div>
+        </div>
         <NavItem icon={FileText} label="Reports" />
         <NavItem icon={Settings} label="Settings" />
       </div>

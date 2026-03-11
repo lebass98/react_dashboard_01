@@ -12,9 +12,11 @@ import MonthlySalesChart from './components/MonthlySalesChart';
 import StatisticsChart from './components/StatisticsChart';
 import CustomersDemographic from './components/CustomersDemographic';
 import TaskList from './components/TaskList';
+import TaskKanban from './components/TaskKanban';
 import BasicTables from './components/BasicTables';
 import FAQ from './components/FAQ';
 import Integrations from './components/Integrations';
+import Calendar from './components/Calendar';
 import { Users, Package } from 'lucide-react';
 
 const App: React.FC = () => {
@@ -79,6 +81,9 @@ const App: React.FC = () => {
     if (currentPage === 'task-list') {
       return <TaskList />;
     }
+    if (currentPage === 'task-kanban') {
+      return <TaskKanban />;
+    }
     if (currentPage === 'basic-tables') {
       return <BasicTables />;
     }
@@ -87,6 +92,9 @@ const App: React.FC = () => {
     }
     if (currentPage === 'integrations') {
       return <Integrations />;
+    }
+    if (currentPage === 'calendar') {
+      return <Calendar />;
     }
 
     return (
