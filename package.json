@@ -17,6 +17,8 @@
     "@dnd-kit/sortable": "^10.0.0",
     "@dnd-kit/utilities": "^3.2.2",
     "@tailwindcss/vite": "^4.2.1",
+    "echarts": "^6.0.0",
+    "echarts-for-react": "^3.0.6",
     "jsvectormap": "^1.7.0",
     "lucide-react": "^0.577.0",
     "react": "^19.2.0",

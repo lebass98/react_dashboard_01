@@ -17,6 +17,7 @@ import BasicTables from './components/BasicTables';
 import FAQ from './components/FAQ';
 import Integrations from './components/Integrations';
 import Calendar from './components/Calendar';
+import LineCharts from './components/LineCharts';
 import { Users, Package } from 'lucide-react';
 
 const App: React.FC = () => {
@@ -95,6 +96,9 @@ const App: React.FC = () => {
     }
     if (currentPage === 'calendar') {
       return <Calendar />;
+    }
+    if (currentPage === 'line-charts') {
+      return <LineCharts />;
     }
 
     return (

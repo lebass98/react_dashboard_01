@@ -5,6 +5,7 @@ interface CustomDatePickerProps {
   placeholder?: string;
   onChange?: (date: Date | { start: Date; end: Date }) => void;
   isRange?: boolean;
+  value?: Date;
   defaultRange?: { start: Date; end: Date };
   customTrigger?: React.ReactNode;
 }
@@ -13,14 +14,22 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = ({
   placeholder = "Select date",
   onChange,
   isRange = false,
+  value,
   defaultRange,
   customTrigger
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+  const [selectedDate, setSelectedDate] = useState<Date | null>(value || null);
   const [range, setRange] = useState<{ start: Date | null; end: Date | null }>(
     defaultRange ? { start: defaultRange.start, end: defaultRange.end } : { start: null, end: null }
   );
+
+  useEffect(() => {
+    if (value) {
+      setSelectedDate(value);
+      setCurrentMonth(new Date(value.getFullYear(), value.getMonth(), 1));
+    }
+  }, [value]);
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const dropdownRef = useRef<HTMLDivElement>(null);
 

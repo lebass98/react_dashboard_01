@@ -75,12 +75,13 @@ const Calendar: React.FC = () => {
     setCurrentDate(newDate);
   };
 
-  const handleAddEvent = () => {
+  const handleAddEvent = (initialDate?: Date) => {
+    const defaultDate = initialDate || new Date();
     setFormData({
       title: '',
       type: 'primary',
-      startDate: new Date(2026, 3, 6),
-      endDate: new Date(2026, 3, 7)
+      startDate: defaultDate,
+      endDate: defaultDate
     });
     setIsEditing(false);
     setEditingEventId(null);
@@ -176,7 +177,11 @@ const Calendar: React.FC = () => {
         {days.map((d, i) => {
           const dayEvents = events.filter(e => e.startDate.toDateString() === d.date.toDateString());
           return (
-            <div key={i} className={`min-h-[140px] p-2 border-r border-b border-slate-200 dark:border-slate-800 last:border-r-0 ${d.current ? '' : 'bg-slate-50/30 dark:bg-slate-800/20'}`}>
+            <div 
+                key={i} 
+                onClick={() => handleAddEvent(d.date)}
+                className={`min-h-[140px] p-2 border-r border-b border-slate-200 dark:border-slate-800 last:border-r-0 cursor-pointer transition-all active:scale-[0.98] active:bg-slate-50 dark:active:bg-slate-800/50 hover:bg-slate-50/50 dark:hover:bg-slate-800/30 ${d.current ? '' : 'bg-slate-50/30 dark:bg-slate-800/20'}`}
+            >
               <div className="flex justify-start mb-2 px-1">
                 <span className={`text-[14px] font-bold ${d.current ? 'text-slate-800 dark:text-slate-200' : 'text-slate-300 dark:text-slate-700'}`}>
                     {d.day}
@@ -230,8 +235,12 @@ const Calendar: React.FC = () => {
                 <div className="p-3 text-[11px] font-bold text-slate-400 dark:text-slate-500 border-r border-slate-200 dark:border-slate-800 text-right pr-4 uppercase">
                     {time}
                 </div>
-                {weekDays.map((_, i) => (
-                    <div key={i} className="border-r border-slate-100 dark:border-slate-800/50 last:border-r-0 relative min-h-[50px] group transition-colors">
+                {weekDays.map((d, i) => (
+                    <div 
+                        key={i} 
+                        onClick={() => handleAddEvent(d)}
+                        className="border-r border-slate-100 dark:border-slate-800/50 last:border-r-0 relative min-h-[50px] group transition-colors cursor-pointer hover:bg-slate-50/50 dark:hover:bg-slate-800/20 active:bg-slate-100 dark:active:bg-slate-800/40"
+                    >
                         {time === 'all-day' && i === 3 && (
                             <div className={`absolute inset-x-1 top-1 bottom-1 px-2 py-1 rounded text-[10px] font-bold ${getEventStyles('danger')}`}>Event Conf.</div>
                         )}
@@ -265,7 +274,10 @@ const Calendar: React.FC = () => {
                <div className="p-4 text-[12px] font-bold text-slate-400 dark:text-slate-500 border-r border-slate-200 dark:border-slate-800 text-right pr-6 uppercase leading-none">
                  {time}
                </div>
-               <div className="relative min-h-[60px] group transition-colors" />
+               <div 
+                 onClick={() => handleAddEvent(currentDate)}
+                 className="relative min-h-[60px] group transition-colors cursor-pointer hover:bg-slate-50/50 dark:hover:bg-slate-800/20 active:bg-slate-100 dark:active:bg-slate-800/40" 
+               />
             </div>
           ))}
         </div>
@@ -364,12 +376,20 @@ const Calendar: React.FC = () => {
 
                     <div className="space-y-1.5">
                         <label className="text-[14px] font-bold text-slate-700 dark:text-slate-300 ml-1">Enter Start Date</label>
-                        <CustomDatePicker placeholder="2026. 04. 06." onChange={(d) => d instanceof Date && setFormData({...formData, startDate: d})} />
+                        <CustomDatePicker 
+                            value={formData.startDate}
+                            placeholder="2026. 04. 06." 
+                            onChange={(d) => d instanceof Date && setFormData({...formData, startDate: d})} 
+                        />
                     </div>
 
                     <div className="space-y-1.5">
                         <label className="text-[14px] font-bold text-slate-700 dark:text-slate-300 ml-1">Enter End Date</label>
-                        <CustomDatePicker placeholder="2026. 04. 07." onChange={(d) => d instanceof Date && setFormData({...formData, endDate: d})} />
+                        <CustomDatePicker 
+                            value={formData.endDate}
+                            placeholder="2026. 04. 07." 
+                            onChange={(d) => d instanceof Date && setFormData({...formData, endDate: d})} 
+                        />
                     </div>
                 </div>
 

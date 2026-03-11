@@ -15,7 +15,8 @@ import {
   SquarePen,
   ListTodo,
   Table,
-  Layers
+  Layers,
+  BarChart3
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -66,10 +67,11 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onPageChange, curren
           {currentPage === 'dashboard' && <span className="text-[10px] font-bold bg-white/20 px-2 py-0.5 rounded text-white tracking-wide">NEW</span>}
         </div>
 
-        {/* Inactive Items */}
+        {/* Inactive Items Hidden
         <NavItem icon={BarChart2} label="Analytics" hasSubmenu subItems={['Overview', 'Real-time', 'Demographics']} />
         <NavItem icon={Users} label="Users" badge="2.4k" hasSubmenu subItems={['All Users', 'Active', 'Banned']} />
         <NavItem icon={ShoppingCart} label="E-commerce" hasSubmenu subItems={['Products', 'Orders', 'Customers', 'Coupons']} />
+        */}
         
         {/* Task Menu */}
         <NavItem
@@ -139,9 +141,25 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onPageChange, curren
           isActive={currentPage === 'faq' || currentPage === 'integrations'}
         />
 
+        {/* ECharts Submenu */}
+        <NavItem
+          icon={BarChart3}
+          label="ECharts"
+          hasSubmenu
+          subItems={['Line charts']}
+          onSubItemClick={(sub) => {
+            if (sub === 'Line charts') onPageChange('line-charts');
+            onClose();
+          }}
+          activeSubItem={currentPage === 'line-charts' ? 'Line charts' : undefined}
+          isActive={currentPage === 'line-charts'}
+        />
+
+        {/* Inactive Items Hidden
         <NavItem icon={Box} label="Inventory" badge="847" />
         <NavItem icon={Activity} label="Transactions" />
         <NavItem icon={MessageSquare} label="Messages" badge="12" badgeColor="bg-red-500 text-white" />
+        */}
         <div
           onClick={() => { onPageChange('calendar'); onClose(); }}
           className={`group flex items-center justify-between px-3 py-2.5 rounded-xl cursor-pointer transition-all ${currentPage === 'calendar' ? 'bg-indigo-50/30 dark:bg-slate-800/30 text-indigo-600 dark:text-white' : 'text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white hover:bg-indigo-50/50 dark:hover:bg-slate-800/50'}`}
@@ -151,8 +169,10 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onPageChange, curren
             <span className={`text-sm ${currentPage === 'calendar' ? 'font-bold' : 'font-medium'}`}>Calendar</span>
           </div>
         </div>
+        {/* Inactive Items Hidden
         <NavItem icon={FileText} label="Reports" />
         <NavItem icon={Settings} label="Settings" />
+        */}
       </div>
 
       {/* User Profile Footer */}
