@@ -120,19 +120,21 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onPageChange, curren
           icon={Layers}
           label="Pages"
           hasSubmenu
-          subItems={['FAQ', 'Integrations', 'Hero Sections']}
+          subItems={['FAQ', 'Integrations', 'Hero Sections', 'Pricing Sections']}
           onSubItemClick={(sub) => {
             if (sub === 'FAQ') onPageChange('faq');
             if (sub === 'Integrations') onPageChange('integrations');
             if (sub === 'Hero Sections') onPageChange('hero-sections');
+            if (sub === 'Pricing Sections') onPageChange('pricing-sections');
             onClose();
           }}
           activeSubItem={
             currentPage === 'faq' ? 'FAQ' :
               currentPage === 'integrations' ? 'Integrations' : 
-                currentPage === 'hero-sections' ? 'Hero Sections' : undefined
+                currentPage === 'hero-sections' ? 'Hero Sections' : 
+                  currentPage === 'pricing-sections' ? 'Pricing Sections' : undefined
           }
-          isActive={currentPage === 'faq' || currentPage === 'integrations' || currentPage === 'hero-sections'}
+          isActive={currentPage === 'faq' || currentPage === 'integrations' || currentPage === 'hero-sections' || currentPage === 'pricing-sections'}
         />
 
         {/* ECharts Submenu */}
