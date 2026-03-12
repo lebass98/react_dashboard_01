@@ -18,6 +18,7 @@ import FAQ from './components/FAQ';
 import Integrations from './components/Integrations';
 import Calendar from './components/Calendar';
 import LineCharts from './components/LineCharts';
+import HeroSections from './components/HeroSections';
 import { Users, Package } from 'lucide-react';
 
 const App: React.FC = () => {
@@ -99,6 +100,9 @@ const App: React.FC = () => {
     }
     if (currentPage === 'line-charts') {
       return <LineCharts />;
+    }
+    if (currentPage === 'hero-sections') {
+      return <HeroSections />;
     }
 
     return (
