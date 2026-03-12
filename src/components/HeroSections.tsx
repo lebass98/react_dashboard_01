@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { 
   ChevronRight, ArrowRight, Play, Star, CheckCircle, Search, Sparkles, Users, Box, 
-  Monitor, Smartphone, Tablet, Sun, Moon, ChevronDown, Copy, Code as CodeIcon, Eye 
+  Monitor, Smartphone, Tablet, Sun, Moon, ChevronDown, Copy
 } from 'lucide-react';
 
 interface HeroCardProps {
